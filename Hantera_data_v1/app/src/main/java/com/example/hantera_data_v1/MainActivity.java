@@ -41,4 +41,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public void removeStudent(View view) {
+        EditText rID = findViewById(R.id.remove_id);
+        int id = Integer.parseInt(rID.getText().toString());
+        Database.instance.remove(id);
+
+        studentList.setText(Database.instance.printStudents());
+    }
 }
