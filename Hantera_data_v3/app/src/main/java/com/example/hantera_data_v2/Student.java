@@ -1,6 +1,8 @@
 package com.example.hantera_data_v2;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private int id;
     private String namn;
     private String pNr;

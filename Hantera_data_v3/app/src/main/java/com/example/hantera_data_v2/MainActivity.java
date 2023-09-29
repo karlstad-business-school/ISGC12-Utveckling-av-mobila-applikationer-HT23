@@ -21,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new Database();
+        new DataManager();
         idET = findViewById(R.id.student_id);
         nameET = findViewById(R.id.student_namn);
         pnrET = findViewById(R.id.student_pnr);
         addBtn = findViewById(R.id.add_btn);
         studentList = findViewById(R.id.student_list);
+
+        Database.instance.setStudents(DataManager.instance.readFromFile(this));
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 Student s = new Student(id, namn, pnr);
 
                 Database.instance.add(s);
+                DataManager.instance.writeToFile(MainActivity.this, Database.instance.getStudents());
 
                 studentList.setText(Database.instance.printStudents());
             }

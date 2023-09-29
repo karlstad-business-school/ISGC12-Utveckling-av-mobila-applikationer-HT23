@@ -61,6 +61,10 @@ public class Database {
         return print;
     }
 
+    public void setStudents(ArrayList<Student> list){
+        this.students = list;
+    }
+
     public ArrayList<Student> getStudents(){
         return this.students;
     }
